@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use('/',router);
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 4000;
 
 DBConnection();
 
