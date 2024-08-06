@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import { type } from "os";
-
 
 const fileSchema = new mongoose.Schema({
     path:{
@@ -15,6 +13,10 @@ const fileSchema = new mongoose.Schema({
         type:Number,
         require:true,
         default:0
+    },
+    password:{
+        type:String,
+        require:false
     }
 })
 
