@@ -1,5 +1,5 @@
 import express from 'express';
-import { uploadImage ,downloadImage} from '../controller/image-controller.js';
+import { uploadImage ,downloadImage,serveDownload} from '../controller/image-controller.js';
 import upload from '../utils/upload.js';
 
 const router = express.Router();
@@ -8,4 +8,6 @@ router.post('/upload',upload.single('file'),uploadImage);
 
 router.get('/file/:fileId',downloadImage);
 
+// Route for actual file download
+router.get('/file/download/:fileId', serveDownload);
 export default router;
