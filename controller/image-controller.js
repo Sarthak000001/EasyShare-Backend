@@ -2,7 +2,7 @@ import File from "../models/file.js";
 import bcrypt from 'bcrypt';
 
 export const uploadImage = async(request,respone) =>{
-    // console.log(request)
+    const password = request.body.password;
     const fileObj = {
         path: request.file.path,
         name: request.file.originalname
@@ -11,10 +11,11 @@ export const uploadImage = async(request,respone) =>{
         const saltRounds = 10;
         fileObj.password = await bcrypt.hash(password, saltRounds);
     }
-    try{
 
+    try{
        const file = await File.create(fileObj); 
-       respone.status(200).json({path:`https://easyshare-backend-0d13.onrender.com/file/${file._id}`})
+    //    respone.status(200).json({path:`http://localhost:8000/file/${file._id}`})
+        respone.status(200).json({path:`https://easyshare-backend-0d13.onrender.com/file/${file._id}`});
     }
     catch(err){
         console.log(err.message);
